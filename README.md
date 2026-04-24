@@ -61,7 +61,8 @@ cp .env.example .env
 | 変数 | 必須 | デフォルト | 説明 |
 | --- | --- | --- | --- |
 | `GCP_PROJECT_ID` | Yes | - | GCP プロジェクト ID |
-| `GCP_LOCATION` | No | `us-central1` | Vertex AI のリージョン |
+| `GCP_LOCATION` | No | `global` | Vertex AI のリージョン |
+| `VERTEX_AI_MODEL` | No | `gemini-2.5-flash` | 使用するモデル |
 
 ## サンプル
 

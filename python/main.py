@@ -24,7 +24,7 @@ def main() -> None:
     prompt = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else "こんにちは。自己紹介してください。"
 
     response = client.models.generate_content(
-        model="gemini-3-flash-preview",
+        model=os.environ.get("VERTEX_AI_MODEL", "gemini-2.5-flash"),
         contents=prompt,
         config=types.GenerateContentConfig(
             temperature=0.7,

@@ -18,7 +18,11 @@
       "mcp__plugin_context7_context7__query-docs",
       "Bash(uv sync *)",
       "Skill(programming)",
-      "Bash(./mvnw compile *)"
+      "Bash(./mvnw compile *)",
+      "Bash(export GCP_PROJECT_ID=sales-pipeline-489309)",
+      "Bash(export GCP_LOCATION=global)",
+      "Bash(export VERTEX_AI_MODEL=gemini-3-flash-preview)",
+      "Bash(./mvnw spring-boot:run)"
     ]
   }
 }
