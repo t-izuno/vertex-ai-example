@@ -1,12 +1,11 @@
 # Vertex AI Gemini API サンプル
 
 Vertex AI の Gemini モデルに API で問い合わせる
-Python サンプルプロジェクトです。
+サンプルプロジェクトです。
+Python と Java (Spring Boot) の実装を含みます。
 
 ## 前提条件
 
-- Python 3.12 以上
-- [uv](https://docs.astral.sh/uv/) (Python パッケージマネージャ)
 - [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
 - Vertex AI API が有効な GCP プロジェクト
 
@@ -49,34 +48,56 @@ gcloud config set compute/region us-central1
 gcloud auth application-default login
 ```
 
-## Python 環境セットアップ
+## 環境変数の設定
+
+`.env.example` をコピーして GCP プロジェクト ID を設定します。
+この `.env` は Python・Java 両方のサンプルから共通で使用します。
 
 ```bash
-# 依存関係をインストール
-uv sync
+cp .env.example .env
+# .env の GCP_PROJECT_ID を実際のプロジェクト ID に変更
 ```
 
-## 使い方
+| 変数 | 必須 | デフォルト | 説明 |
+| --- | --- | --- | --- |
+| `GCP_PROJECT_ID` | Yes | - | GCP プロジェクト ID |
+| `GCP_LOCATION` | No | `us-central1` | Vertex AI のリージョン |
 
-実行前に `main.py` の `project_id` を
-実際の GCP プロジェクト ID に変更してください。
+## サンプル
+
+### Python
+
+詳細は [python/README.md](python/README.md) を参照してください。
+`.env` は `python-dotenv` で自動的に読み込まれます。
 
 ```bash
-# デフォルトプロンプトで実行
-uv run python main.py
+cd python
+uv sync
+uv run python main.py "こんにちは"
+```
 
-# プロンプトを引数で指定
-uv run python main.py "日本の首都はどこですか？"
+### Java (Spring Boot)
+
+詳細は [java/README.md](java/README.md) を参照してください。
+実行前に `.env` を `source` して環境変数をシェルに読み込みます。
+
+```bash
+cd java
+source ../.env && ./mvnw spring-boot:run
 ```
 
 ## プロジェクト構成
 
 ```text
 vertex-ai-example/
+├── .env.example                 # 環境変数テンプレート（共通）
 ├── scripts/
-│   └── setup-gcp.sh    # GCP 初期設定スクリプト
-├── main.py              # Gemini API 問い合わせサンプル
-├── pyproject.toml       # プロジェクト定義
-├── uv.lock              # 依存関係ロックファイル
+│   └── setup-gcp.sh            # GCP 初期設定スクリプト
+├── python/
+│   ├── main.py                  # CLI サンプル
+│   └── pyproject.toml           # uv プロジェクト定義
+├── java/
+│   ├── src/                     # Spring Boot アプリケーション
+│   └── pom.xml                  # Maven プロジェクト定義
 └── README.md
 ```

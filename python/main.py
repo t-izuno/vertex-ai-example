@@ -2,6 +2,7 @@
 
 import os
 import sys
+from pathlib import Path
 
 from dotenv import load_dotenv
 from google import genai
@@ -9,7 +10,7 @@ from google.genai import types
 
 
 def main() -> None:
-    load_dotenv()
+    load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
     project_id = os.environ["GCP_PROJECT_ID"]
     location = os.environ.get("GCP_LOCATION", "us-central1")
