@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv --version)",
+      "Bash(uv init *)",
+      "Bash(uv add *)",
+      "Bash(uv run *)",
+      "mcp__gcloud-mcp__run_gcloud_command",
+      "Bash(chmod +x *)",
+      "Bash(npx --yes markdownlint-cli2 --help)",
+      "Bash(markdownlint-cli2 *)",
+      "Bash(env)",
+      "Bash(git branch *)"
+    ]
+  }
+}
